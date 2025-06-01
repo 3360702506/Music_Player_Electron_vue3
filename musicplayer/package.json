@@ -1,0 +1,61 @@
+{
+  "name": "musicplayer",
+  "version": "1.0.0",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:dev": "concurrently \"vite\" \"electron .\"",
+    "electron:build": "vite build && electron-builder",
+    "electron:preview": "vite build && electron ."
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "electron-store": "^8.1.0",
+    "element-plus": "^2.5.6",
+    "music-metadata": "^7.14.0",
+    "nedb": "^1.8.0",
+    "pinia": "^3.0.1",
+    "uuid": "^11.1.0",
+    "vue": "^3.5.13",
+    "vue-i18n": "^11.1.5",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "concurrently": "^8.2.2",
+    "electron": "^30.1.4",
+    "electron-builder": "^24.13.3",
+    "sass": "^1.72.0",
+    "vite": "^6.2.4",
+    "vite-plugin-vue-devtools": "^7.7.2"
+  },
+  "build": {
+    "appId": "com.musicplayer.app",
+    "productName": "Music Player",
+    "directories": {
+      "output": "dist_electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.music"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Audio"
+    }
+  }
+}
